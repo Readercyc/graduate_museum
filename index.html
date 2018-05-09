@@ -1,0 +1,145 @@
+  <!DOCTYPE html>
+<!--
+Created using JS Bin
+http://js.jirengu.com
+
+Copyright (c) 2018 by anonymous (http://js.jirengu.com/toqakoniho/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/> 
+<link rel="stylesheet" type="text/css" href="index.css">
+<html>
+
+<head>
+  <script type="text/javascript" src="./vue.js"></script>
+  <meta charset="utf-8">
+  <title>毕业博物馆</title>
+</head>
+<body id="body" v-on:click="hide">
+  <h1>
+    <img src="./img/title.png">
+  <h1>
+  <h2>
+    湘潭大学2018届
+  </h2>
+  <form action="#" method="POST" onsubmit="return check(this)">
+    <img src="./img/bird.png">x
+    <div id="user-information">
+      <div id="name"><label for="name">姓名</label>
+        <input type="text" name="name" v-model="name_value " autocomplete="off">
+      </div>
+      <div id="qq"><label for="qq">QQ</label>
+        <input type="text" name="qq" v-model="qq_value" autocomplete="off">
+      </div>
+      <div id="phone"><label for="phone">联系方式</label>
+        <input type="text" name="phone" v-model="phone_value" autocomplete="off">
+      </div>
+      <div id="department" v-on:click="listshow">
+        <label for="department">毕业学院</label>
+        <input type="text" name="department" v-model="d_value" readonly>
+        <ul v-bind:class='{none:display_active}'>
+          <li v-on:click="handleSelect" v-bind:class="{d_option:active}" v-for="value in department">{{value}}</li>
+        <ul>
+      </div>
+
+      <div id="graduate">
+        <div v-bind:class='{not_select:!active}' v-on:click="handlePicked">
+          本科毕业
+          <div class="picked" >
+              <div v-bind:class="{none:!active}"></div>
+          </div>
+        </div>
+        <div v-bind:class='{not_select:active}' v-on:click="handlePicked">
+          硕士毕业
+          <div class="picked">
+            <div v-bind:class="{none:active}"></div>
+          </div>
+        </div>
+        <input v-model="graduate_value" type="text" readonly name="graduate" style="opacity: 0;height: 0px;width: 0px;" autocomplete="off">
+      </div>
+    </div>
+    <img src="./img/insect.png">
+    <div id="photo-information">
+      <div id="object-kind">
+       你的展品:
+       <ul>
+        <li v-on:click="classSelect" data-class="照片">
+          <div class="picked" data-class="照片">
+            <div v-bind:class="{none:photo}" data-class="照片"></div>
+          </div><br/>照片
+        </li>
+
+        <li v-on:click="classSelect" data-class="中小物件">
+          <div class="picked" data-class="中小物件">
+            <div v-bind:class="{none:middle}" data-class="中小物件"></div>
+          </div>
+          <br/>中小物件
+        </li>
+        
+        <li v-on:click="classSelect" data-class="大物件">
+          <div class="picked" data-class="大物件">
+            <div v-bind:class="{none:big}"  data-class="大物件"></div>
+          </div><br/>大物件
+        </li>
+       </ul>
+       <input v-model="object" type="text" readonly name="object" style="opacity: 0;height: 0px;width: 0px;" >
+      </div>
+      <div id="photo">
+        你的展品照片:
+        <span class="cover">
+           <input class="js_upFile cover1" type="file" name="photo" accept="image/*" capture="camera"/ >
+        </span>
+        <p>Do you want to share its story?</p><br/>
+        <div id="share">
+          <div v-on:click="no_story">
+            No
+          </div>
+          <div v-on:click="show">
+            Yes
+          </div>
+        </div>
+      </div>
+      <img src="./img/no-story.png" id="no-story" v-bind:class="{none:none}" v-on:click="hide">
+      <transition name="bounce">
+        <div id="letter" v-bind:class="{none:none}" >
+          <span v-on:click="fade">×</span>
+          <p>属于您的小故事(300字以内哦)：</p>
+          <br/>
+          <textarea id="content" name="story" v-model="story" v-on:change="c">
+          </textarea>
+          <p >{{count}}</p>
+        </div>
+      </transition>
+    </div>
+    <input type="submit" name="submit" id="submit" value="FINISH" >
+  </form>
+</body>
+<form>
+<script src="./index.js">
+    
+</script>
+</html>
+
+<!-- <li>
+          <div class="picked">
+            <div v-bind:class="{none:active}"></div>
+          </div><br/>
+          照片
+        </li>
+
+        <li>
+          <div class="picked">
+            <div v-bind:class="{none:active}"></div>
+          </div>
+          <br/>
+          中小物件
+        </li>
+        
+        <li>
+          <div class="picked">
+            <div v-bind:class="{none:active}"></div>
+          </div><br/>
+          大物件
+        </li> -->
