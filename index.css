@@ -161,7 +161,7 @@ form div > select{
 .picked{
 	margin: 0;
 	position: relative;
-	vertical-align: text-top;
+	vertical-align: middle;
 	padding: 0px;
 	display: inline-block;	
 	border:1px solid rgba(255,255,255);
@@ -272,8 +272,8 @@ input[name="submit"]{
 #letter{
 	transition: 0.3s all;
 	border: 0px!important;
-	position: fixed;
-	bottom: 10px;
+	position: absolute;
+	top: 25px;
 	width: 320px;
 	height: 608px!important;
 	background-image: url(./img/letter.png);

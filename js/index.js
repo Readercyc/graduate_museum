@@ -187,10 +187,29 @@ function update() {
         $("input:file").removeAttr("capture");
     };
 }
+function readURL(input) {
+
+   if (input.files && input.files[0]) {
+       var reader = new FileReader();
+
+       reader.onload = function (e) {
+
+           $('.cover').css("background-image", "url('"+e.target.result+"')");
+           $('.cover').css("background-size", "100% 100%");
+       }
+       reader.readAsDataURL(input.files[0]);
+   }
+}
+$("#file").change(function(){
+	
+	console.log("!!");
+   readURL(this);
+});
 
 $('#submit').click(function(){
-
+	console.log(photo.file);
 	var myreg=/^[1][3,4,5,7,8][0-9]{9}$/; 
+	var photoreg = /\.(jpg|gif|jpeg|bmp|png)+$/;
 	var kind;
 	console.log(naMe.name_value);
 	if(naMe.name_value == "")
@@ -223,6 +242,16 @@ $('#submit').click(function(){
 		alert("点击猫头鹰上传你的展品图片");
 		return false;
 	}
+	if(photo.file=="")
+	{
+		alert("点击猫头鹰上传你的展品图片");
+		return false;
+	}
+	if(!photoreg.test(photo.file))
+	{
+		alert("请使用图片上传");
+		return false;
+	}
 	if(letter.story=="")
 	{
 		alert("我们一定不能当没有故事的同学！");
@@ -249,10 +278,10 @@ $('#submit').click(function(){
 		},
 		success:function(data)
 		{
-			console.log("!!!")
+			console.log(data)
 		},
 		error:function(){
-			console.log("...");
+			console.log("服务器出了点故障....请稍候再试");
 		}
 
 	})
