@@ -13,7 +13,8 @@ Released under the MIT license: http://jsbin.mit-license.org
 <html>
 
 <head>
-  <script type="text/javascript" src="./vue.js"></script>
+  <script type="text/javascript" src="./js/vue.js"></script>
+  <script type="text/javascript" src="./js/jquery.js"></script>
   <meta charset="utf-8">
   <title>毕业博物馆</title>
 </head>
@@ -24,24 +25,24 @@ Released under the MIT license: http://jsbin.mit-license.org
   <h2>
     湘潭大学2018届
   </h2>
-  <form action="#" method="POST" onsubmit="return check(this)">
-    <img src="./img/bird.png">x
+  <form  >
+    <img src="./img/bird.png">
     <div id="user-information">
       <div id="name"><label for="name">姓名</label>
-        <input type="text" name="name" v-model="name_value " autocomplete="off">
+        <input type="text" name="name" v-model="name_value" autocomplete="off">
       </div>
       <div id="qq"><label for="qq">QQ</label>
         <input type="text" name="qq" v-model="qq_value" autocomplete="off">
       </div>
       <div id="phone"><label for="phone">联系方式</label>
-        <input type="text" name="phone" v-model="phone_value" autocomplete="off">
+        <input type="text" name="tel" v-model="phone_value" autocomplete="off">
       </div>
       <div id="department" v-on:click="listshow">
-        <label for="department">毕业学院</label>
-        <input type="text" name="department" v-model="d_value" readonly>
-        <ul v-bind:class='{none:display_active}'>
+        <label for="department">专业</label>
+        <input type="text" name="major" v-model="d_value">
+        <!-- <ul v-bind:class='{none:display_active}'>
           <li v-on:click="handleSelect" v-bind:class="{d_option:active}" v-for="value in department">{{value}}</li>
-        <ul>
+        <ul> -->
       </div>
 
       <div id="graduate">
@@ -57,7 +58,7 @@ Released under the MIT license: http://jsbin.mit-license.org
             <div v-bind:class="{none:active}"></div>
           </div>
         </div>
-        <input v-model="graduate_value" type="text" readonly name="graduate" style="opacity: 0;height: 0px;width: 0px;" autocomplete="off">
+        <input v-model="graduate_value" type="text" readonly name="education" style="opacity: 0;height: 0px;width: 0px;" autocomplete="off">
       </div>
     </div>
     <img src="./img/insect.png">
@@ -84,12 +85,12 @@ Released under the MIT license: http://jsbin.mit-license.org
           </div><br/>大物件
         </li>
        </ul>
-       <input v-model="object" type="text" readonly name="object" style="opacity: 0;height: 0px;width: 0px;" >
+       <input v-model="object" type="text" readonly name="shower" style="opacity: 0;height: 0px;width: 0px;" >
       </div>
       <div id="photo">
         你的展品照片:
         <span class="cover">
-           <input class="js_upFile cover1" type="file" name="photo" accept="image/*" capture="camera"/ >
+           <input class="js_upFile cover1" type="file" name="shower_file"  v-model="file" accept="image/*" capture="camera"/ >
         </span>
         <p>Do you want to share its story?</p><br/>
         <div id="share">
@@ -113,11 +114,11 @@ Released under the MIT license: http://jsbin.mit-license.org
         </div>
       </transition>
     </div>
-    <input type="submit" name="submit" id="submit" value="FINISH" >
+    <input   name="submit" id="submit" value="FINISH" readonly>
   </form>
 </body>
-<form>
-<script src="./index.js">
+
+<script src="./js/index.js">
     
 </script>
 </html>

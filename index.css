@@ -106,7 +106,7 @@ form div > select{
 	overflow-y: scroll;
 
 }
-#department:after{
+/*#department:after{
 	text-indent: 2px;
 	content: '▽';
 	font-size: 30px;
@@ -115,7 +115,7 @@ form div > select{
 	top:-1px;
 	right:8px;
 
-}
+}*/
 .d_option{
 	font-size: 14px;
 	
@@ -255,7 +255,7 @@ form div > select{
 #submit:hover{
 	background-color: rgba(54,89,126,0.55);
 }
-input[type="submit"]{
+input[name="submit"]{
 	font-size: 14px;
 	background-color: transparent;
 	color:#fff;
